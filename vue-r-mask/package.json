@@ -1,0 +1,18 @@
+{
+  "name": "vue-r-mask",
+  "version": "1.0.0",
+  "description": "Masked input directive for vue.js 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue",
+    "mask",
+    "directive",
+    "input",
+    "textarea"
+  ],
+  "author": "raidan00",
+  "license": "MIT"
+}
