@@ -20,16 +20,15 @@ function initMask (el, val){
 		if(match[0].length == 1){
 			toPush.minLen = 1;
 			toPush.maxLen = 1;
-			toPush.newReg = match[0];
-      toPush.charReg = match[0];
       toPush.type = 'single';
-      toPush.reg = new RegExp(toPush.charReg+'+');
+      toPush.char = match[0];
+      toPush.reg = new RegExp(toPush.char+'+');
 		} else {
 			toPush.minLen = +/\{(\d+)/.exec(match[0])[1];
 			toPush.maxLen = +/(\d+)\}/.exec(match[0])[1];
 			toPush.newReg = '(_|' + match[0].replace('{', '){');
-      toPush.charReg = /[^{]+/.exec(toPush.newReg)[0];
-      toPush.reg = new RegExp(toPush.charReg+'+');
+      toPush.char = /[^{]+/.exec(toPush.newReg)[0];
+      toPush.reg = new RegExp(toPush.char+'+');
 		}
 		frame.push(toPush);	
 	}
@@ -47,7 +46,7 @@ function initMask (el, val){
         }
         if(arr[0] == undefined){
           if(frame[i].type == 'single'){
-            newVal.push({char:frame[i].charReg});
+            newVal.push({char:frame[i].char});
           }else{
             newVal.push({char:'_'});
           }
@@ -57,7 +56,7 @@ function initMask (el, val){
           newVal.push(arr.shift());
         }else{
           if(frame[i].type == 'single'){
-              newVal.push({char:frame[i].charReg});
+              newVal.push({char:frame[i].char});
           }else{
               arr.shift();
               k--;
