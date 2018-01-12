@@ -14,25 +14,25 @@ export default {
 function initMask (el, val){
 	var frame = [];
 	var str = val.value.toString().slice(1,-1);
-	var reg = /(?:\\d+\{[\d,]\})|./g, match;
+	var reg = /(?:\\d+\{[\d,]+\})|\\.|./g, match;
 	while(match = reg.exec(str)){
-		var toPush = {reg: new RegExp(match[0]), regStr: match[0]};
-		if(match[0].length == 1){
+		var toPush = {};
+		if(match[0].length <= 2){
 			toPush.minLen = 1;
 			toPush.maxLen = 1;
       toPush.type = 'single';
-      toPush.char = match[0];
-      toPush.reg = new RegExp(toPush.char+'+');
+      toPush.char = match[0][match[0].length-1];
+      toPush.reg = new RegExp(match[0]+'+');
 		} else {
 			toPush.minLen = +/\{(\d+)/.exec(match[0])[1];
 			toPush.maxLen = +/(\d+)\}/.exec(match[0])[1];
-			toPush.newReg = '(_|' + match[0].replace('{', '){');
-      toPush.char = /[^{]+/.exec(toPush.newReg)[0];
-      toPush.reg = new RegExp(toPush.char+'+');
+      toPush.reg = new RegExp('(_|' + /[^{]+/.exec(match[0])[0] + ')+');
 		}
 		frame.push(toPush);	
 	}
+	console.log(frame);
   return function (el){	
+		console.log(this.value);
     var arr = this.value.split('').map((e)=>{return {char: e, type: 'char'}});
     var pos = { char: '', type: 'pos' };
     arr.splice(caret.get(this), 0, pos);
@@ -48,16 +48,25 @@ function initMask (el, val){
           if(frame[i].type == 'single'){
             newVal.push({char:frame[i].char});
           }else{
+						if( k >= frame[i].minLen ){
+							continue mainLoop;
+						}
             newVal.push({char:'_'});
           }
           continue;
         }
         if(frame[i].reg.exec(arr[0].char)){
+					if( k >= frame[i].minLen && arr[0].char == '_') {
+						continue mainLoop;
+					}
           newVal.push(arr.shift());
         }else{
           if(frame[i].type == 'single'){
               newVal.push({char:frame[i].char});
           }else{
+							if( k >= frame[i].minLen ) {
+								continue mainLoop;
+							}
               arr.shift();
               k--;
           }
