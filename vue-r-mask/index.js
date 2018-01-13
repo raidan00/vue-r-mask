@@ -2,13 +2,11 @@ import caret from  './caretPos.js';
 
 export default {
   bind (el, val, VNode){
+    if(VNode.data.on && VNode.data.on.input) el.removeEventListener('input', VNode.data.on.input);
     var maskFunc = initMask(el, val);
-    el.removeEventListener('input', VNode.data.on.input)
     el.addEventListener('input', maskFunc);
-    el.addEventListener('input', VNode.data.on.input)
-  },
-  unbind (el){
-    //el.removeEventListener('input', maskFunc)
+		maskFunc.call(el);
+    if(VNode.data.on && VNode.data.on.input) el.addEventListener('input', VNode.data.on.input)
   },
 }
 function initMask (el, val){
@@ -30,9 +28,7 @@ function initMask (el, val){
 		}
 		frame.push(toPush);	
 	}
-	console.log(frame);
-  return function (el){	
-		console.log(this.value);
+  return function (){	
     var arr = this.value.split('').map((e)=>{return {char: e, type: 'char'}});
     var pos = { char: '', type: 'pos' };
     arr.splice(caret.get(this), 0, pos);

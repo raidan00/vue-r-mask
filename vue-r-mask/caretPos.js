@@ -1,7 +1,6 @@
 export default {
 	get: function (ctrl) {
 		var CaretPos = 0;
-
 		if (ctrl.selectionStart || ctrl.selectionStart == 0) {// Standard.
 			CaretPos = ctrl.selectionStart;
 		} else if (document.selection) {// Legacy IE
