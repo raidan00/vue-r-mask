@@ -7,9 +7,11 @@
 		</div>
 		<div>
 			<div class="text">Simple mask with v-model</div>
-			<div class="mask">v-mask="/\d{2}-\d{2}/"</div>
-			<div class="mask">v-model="1234"</div>
-			<input v-model="message" v-mask="/\d{2}-\d{2}/">
+			<div class="mask">v-mask="mask"</div>
+			<div class="mask">v-model="message"</div>
+			<div class="mask">mask: {{mask.toString()}}</div>
+			<div class="mask">message: {{message}}</div>
+			<input v-model="message" v-mask="mask">
 		</div>
 		<div>
 			<div class="text">Phone mask</div>
@@ -47,6 +49,7 @@ import mask from 'vue-r-mask'
 export default {
 	data (){
 		return {
+			mask: /\d{2}-\d{2}/,
 			message: '1234',
 		};
 	},

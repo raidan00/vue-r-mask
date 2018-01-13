@@ -5,8 +5,8 @@ export default {
     if(VNode.data.on && VNode.data.on.input) el.removeEventListener('input', VNode.data.on.input);
     var maskFunc = initMask(el, val);
     el.addEventListener('input', maskFunc);
-		maskFunc.call(el);
     if(VNode.data.on && VNode.data.on.input) el.addEventListener('input', VNode.data.on.input)
+		el.dispatchEvent(new Event('input'));
   },
 }
 function initMask (el, val){
