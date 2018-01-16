@@ -1,6 +1,6 @@
 {
   "name": "vue-r-mask",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Masked input directive for vue.js 2",
   "main": "index.js",
   "scripts": {
