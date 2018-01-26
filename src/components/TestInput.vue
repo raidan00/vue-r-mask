@@ -32,7 +32,7 @@
 			<div class="text">Change mask</div>
 			<div class="mask">v-mask="{{changeableMask.toString()}}"</div>
 			<button @click="setMask1">/\+1 \(\d{3}\) \d{4}-\d{2}/</button>
-			<button @click="setMask2">/\+1\d{9}/</button>
+			<button @click="setMask2">/\+1 \d{3} \d{6}/</button>
 			<input v-mask="changeableMask">
 		</div>
   </div>
