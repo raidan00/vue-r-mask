@@ -38,7 +38,6 @@ function initMask (el, val){
 		frame.push(toPush);	
 	}
   return function (){	
-		console.log('fff');
     let arr = this.value.split('').map((e)=>{return {char: e, type: 'char'}});
     let pos = { char: '', type: 'pos' };
     arr.splice(caret.get(this), 0, pos);
