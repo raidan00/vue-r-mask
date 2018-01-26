@@ -2,19 +2,28 @@ import caret from  './caretPos.js';
 
 export default {
   bind (el, val, VNode){
-    if(VNode.data.on && VNode.data.on.input) el.removeEventListener('input', VNode.data.on.input);
-    var maskFunc = initMask(el, val);
-    el.addEventListener('input', maskFunc);
-    if(VNode.data.on && VNode.data.on.input) el.addEventListener('input', VNode.data.on.input)
-		el.dispatchEvent(new Event('input'));
+    bind(...arguments)
   },
+	update (el, val, VNode){
+		if( val.value.toString() == val.oldValue.toString()) return;
+		el.removeEventListener('input', VNode.context.vueRmask)
+		bind(...arguments);
+	}
 }
+function bind (el, val, VNode){
+	if(VNode.data.on && VNode.data.on.input) el.removeEventListener('input', VNode.data.on.input);
+	let maskFunc = initMask(el, val);
+	el.addEventListener('input', maskFunc);
+	VNode.context.vueRmask = maskFunc;
+	if(VNode.data.on && VNode.data.on.input) el.addEventListener('input', VNode.data.on.input)
+	el.dispatchEvent(new Event('input'));
+};
 function initMask (el, val){
-	var frame = [];
-	var str = val.value.toString().slice(1,-1);
-	var reg = /(?:\\d+\{[\d,]+\})|\\.|./g, match;
+	let frame = [];
+	let str = val.value.toString().slice(1,-1);
+	let reg = /(?:\\d+\{[\d,]+\})|\\.|./g, match;
 	while(match = reg.exec(str)){
-		var toPush = {};
+		let toPush = {};
 		if(match[0].length <= 2){
 			toPush.minLen = 1;
 			toPush.maxLen = 1;
@@ -29,12 +38,13 @@ function initMask (el, val){
 		frame.push(toPush);	
 	}
   return function (){	
-    var arr = this.value.split('').map((e)=>{return {char: e, type: 'char'}});
-    var pos = { char: '', type: 'pos' };
+		console.log('fff');
+    let arr = this.value.split('').map((e)=>{return {char: e, type: 'char'}});
+    let pos = { char: '', type: 'pos' };
     arr.splice(caret.get(this), 0, pos);
-    var newVal = [];
-    mainLoop: for(var i = 0; i < frame.length; i++){
-      for(var k = 0; k < frame[i].maxLen; k++){     
+    let newVal = [];
+    mainLoop: for(let i = 0; i < frame.length; i++){
+      for(let k = 0; k < frame[i].maxLen; k++){
         if(arr[0] && arr[0].type == 'pos'){
           newVal.push(arr.shift());
           k--;
