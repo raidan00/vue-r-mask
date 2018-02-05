@@ -30,7 +30,7 @@
 			<textarea rows="3" cols="25" v-mask="/\d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5}/"></textarea>
 		</div>
 		<div>
-			<div class="text">Change mask</div>
+			<div class="text">Change mask on the fly</div>
 			<div class="mask">v-mask="{{changeableMask.toString()}}"</div>
 			<button @click="setMask1">/\+1 \(\d{3}\) \d{4}-\d{2}/</button>
 			<button @click="setMask2">/\+1 \d{3} \d{6}/</button>
