@@ -38,6 +38,8 @@ function initMask (el, val){
 		frame.push(toPush);	
 	}
   return function (){	
+		//let forTests = { before: this.value.slice(0, caret.get(this)) + '|' + this.value.slice( caret.get(this) )};
+
     let arr = this.value.split('').map((e)=>{return {char: e, type: 'char'}});
     let pos = { char: '', type: 'pos' };
     arr.splice(caret.get(this), 0, pos);
@@ -80,5 +82,8 @@ function initMask (el, val){
     }
     this.value = newVal.map((e)=>e.char).join('');
     caret.set(this, newVal.indexOf(pos));
+
+		//forTests.after = this.value.slice(0, caret.get(this)) + '|' + this.value.slice( caret.get(this) );
+		//console.log(forTests);
   }
 };

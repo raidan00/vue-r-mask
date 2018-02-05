@@ -1,5 +1,6 @@
 <template>
   <div>
+		<tests v-if="dev"/>
 		<div>
 			<div class="text">Simple mask</div>
 			<div class="mask">v-mask="/\d{2}-\d{2}/"</div>
@@ -58,13 +59,18 @@
 </style>
 <script>
 import mask from 'vue-r-mask'
+import Tests from './Tests.vue'
 
 export default {
+	components: {
+		Tests,
+	},
 	data (){
 		return {
 			mask: /\d{2}-\d{2}/,
 			message: '1234',
 			changeableMask: /\d{10}/,
+			dev: process.env.NODE_ENV != 'production',
 		};
 	},
 	methods: {
