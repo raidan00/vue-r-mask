@@ -21,7 +21,7 @@ function bind (el, val, VNode){
 function initMask (el, val){
 	let frame = [];
 	let str = val.value.toString().slice(1,-1);
-	let reg = /(?:\\d+\{[\d,]+\})|\\.|./g, match;
+	let reg = /(?:\\d\{[\d,]+\})|\\.|./g, match;
 	while(match = reg.exec(str)){
 		let toPush = {};
 		if(match[0].length <= 2){
