@@ -25,6 +25,11 @@
 			<input v-mask="/\d{2}\/\d{2}\/\d{2,4}/">
 		</div>
 		<div>
+			<div class="text">Input only numbers</div>
+			<div class="mask">v-mask="/\d{0,100}/"</div>
+			<input v-mask="/\d{0,100}/">
+		</div>
+		<div>
 			<div class="text">Use in textarea</div>
 			<div class="mask">v-mask="/\d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5}/"</div>
 			<textarea rows="3" cols="25" v-mask="/\d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5}/"></textarea>

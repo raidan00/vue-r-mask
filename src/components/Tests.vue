@@ -1,12 +1,12 @@
 <template>
-	<div>
-		<div v-if="info == 'process'">
+	<div style="margin-bottom:10px">
+		<div v-if="info == 'process'" style="font-size: 20px;">
 			tests in process
 		</div>
-		<div v-if="info == 'passed'" style="color:green">
+		<div v-if="info == 'passed'" style="color:green; font-size: 20px;">
 			all tests passed
 		</div>
-		<div v-if="info == 'failed'" style="color:red">
+		<div v-if="info == 'failed'" style="color:red; font-size: 20px;">
 			test failed, info in console
 		</div>
 		<input ref='input' v-mask="mask">
