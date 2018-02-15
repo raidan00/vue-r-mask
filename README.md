@@ -13,9 +13,8 @@ npm install vue-r-mask
 
 ## Run this demo repository
 ``` bash
-# install dependencies
+git clone https://github.com/raidan00/vue-r-mask.git
+cd vue-r-mask
 npm install
-
-# serve with hot reload at localhost:8080
 npm run dev
 ```
