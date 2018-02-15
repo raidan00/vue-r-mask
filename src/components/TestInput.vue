@@ -3,8 +3,8 @@
 		<tests v-if="dev"/>
 		<div>
 			<div class="text">Simple mask</div>
-			<div class="mask">v-mask="/\d{2}-\d{2}/"</div>
-			<input v-mask="/\d{2}-\d{2}/">
+			<div class="mask">v-mask="/\d{2}-\w{5}/"</div>
+			<input v-mask="/\d{2}-\w{5}/">
 		</div>
 		<div>
 			<div class="text">Simple mask with v-model</div>
@@ -30,9 +30,20 @@
 			<input v-mask="/\d{0,100}/">
 		</div>
 		<div>
-			<div class="text">Use in textarea</div>
-			<div class="mask">v-mask="/\d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5}/"</div>
-			<textarea rows="3" cols="25" v-mask="/\d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5}/"></textarea>
+			<div class="text">Input only binary numbers</div>
+			<div class="mask">v-mask="/[01]{0,100}/"</div>
+			<input v-mask="/[01]{0,100}/">
+		</div>
+		<div>
+			<div class="text">Input only word</div>
+			<div class="mask">v-mask="/\w{0,100}/"</div>
+			<input v-mask="/\w{0,100}/">
+		</div>
+		<div>
+			<div class="text">First number in hour form 0 to 2</div>
+			<div class="text">First number in minute form 0 to 5</div>
+			<div class="mask">v-mask="/[0-2]{1}\d{1}:[0-5]{1}\d{1}/"</div>
+			<input v-mask="/[0-2]{1}\d{1}:[0-5]{1}\d{1}/">
 		</div>
 		<div>
 			<div class="text">Change mask on the fly</div>
@@ -40,6 +51,11 @@
 			<button @click="setMask1">/\+1 \(\d{3}\) \d{4}-\d{2}/</button>
 			<button @click="setMask2">/\+1 \d{3} \d{6}/</button>
 			<input v-mask="changeableMask">
+		</div>
+		<div>
+			<div class="text">Use in textarea</div>
+			<div class="mask">v-mask="/\d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5}/"</div>
+			<textarea rows="3" cols="25" v-mask="/\d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5} \d{5}/"></textarea>
 		</div>
   </div>
 </template>
