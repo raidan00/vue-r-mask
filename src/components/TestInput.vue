@@ -59,25 +59,6 @@
 		</div>
   </div>
 </template>
-<style scoped>
-	input, textarea {
-		display: block;
-		margin: auto;
-		margin-bottom: 20px;
-		margin-top: 5px;
-		font-size: 17px;
-	}
-	.text {
-		font-weight: bold;
-		margin-bottom: 5px;
-	}
-	button {
-		display: block;
-		margin: auto;
-		margin-top: 5px;
-		font-size: 15px;
-	}
-</style>
 <script>
 import mask from 'vue-r-mask'
 import Tests from './Tests.vue'
@@ -107,4 +88,23 @@ export default {
 	}
 }
 </script>
+<style scoped>
+	input, textarea {
+		display: block;
+		margin: auto;
+		margin-bottom: 20px;
+		margin-top: 5px;
+		font-size: 17px;
+	}
+	.text {
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
+	button {
+		display: block;
+		margin: auto;
+		margin-top: 5px;
+		font-size: 15px;
+	}
+</style>
 
