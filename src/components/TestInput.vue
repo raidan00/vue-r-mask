@@ -40,6 +40,11 @@
 			<input v-mask="/\w{0,100}/">
 		</div>
 		<div>
+			<div class="text">Input only letters</div>
+			<div class="mask">v-mask="/[a-zA-Z]{0,100}/"</div>
+			<input v-mask="/[a-zA-Z]{0,100}/">
+		</div>
+		<div>
 			<div class="text">First number in hour form 0 to 2</div>
 			<div class="text">First number in minute form 0 to 5</div>
 			<div class="mask">v-mask="/[0-2]{1}\d{1}:[0-5]{1}\d{1}/"</div>
