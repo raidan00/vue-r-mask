@@ -1,5 +1,40 @@
 export default [
 
+	{ setMask: /\d{0,100}/ },
+	{ before: "1|", after: "1|"},
+	{ before: "12323|", after: "12323|"},
+	{ before: "123123123a|", after: "123123123|"},
+	{ before: "123123123%|", after: "123123123|"},
+
+	{ setMask: /[01]{0,100}/ },
+	{ before: "4|", after: "|"},
+	{ before: "a|", after: "|"},
+	{ before: "0|", after: "0|"},
+
+	{ setMask: /\w{0,100}/ },
+	{ before: "a|", after: "a|"},
+	{ before: "avv1|", after: "avv1|"},
+	{ before: "avv1@|", after: "avv1|"},
+	{ before: "avv1-|", after: "avv1|"},
+
+	{ setMask: /[a-zA-Z]{0,100}/ },
+	{ before: "1|", after: "|"},
+	{ before: "asdd|", after: "asdd|"},
+	{ before: "asdd1|", after: "asdd|"},
+	{ before: "asdd!|", after: "asdd|"},
+
+	{ setMask: /[0-2]{1}\d{1}:[0-5]{1}\d{1}/ },
+	{ before: "__1|:__", after: "__:1|_"},
+	{ before: "__:11|_", after: "__:11|"},
+	{ before: "__:4|1", after: "__:4|1"},
+	{ before: "2|11:11", after: "2|1:11"},
+	{ before: "21:8|11", after: "21:|11"},
+	{ before: "9|21:11", after: "|21:11"},
+	{ before: "21a|:11", after: "21:|11"},
+	{ before: "21:1s|1", after: "21:1|1"},
+	{ before: "2s|1:11", after: "2|1:11"},
+	{ before: "21:11@|", after: "21:11|"},
+
 	{ setMask: /\d{2}/ },
 	{ before: "__1|", after: "__|"},
 	{ before: "1|__", after: "1|_"},
