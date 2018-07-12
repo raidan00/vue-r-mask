@@ -1,4 +1,4 @@
-import caret from  './caretPos.js'; 
+import caret from  './caretPos.js';
 
 export default {
   bind (el, val, VNode){
@@ -35,10 +35,12 @@ function initMask (el, val){
 			toPush.maxLen = +/(\d+)\}/.exec(match[0])[1];
       toPush.reg = new RegExp('(_|' + match[1] + ')+');
 		}
-		frame.push(toPush);	
+		frame.push(toPush);
 	}
-  return function (){	
+  return function (){
 		//let forTests = { before: this.value.slice(0, caret.get(this)) + '|' + this.value.slice( caret.get(this) )};
+
+    if (this.value === '' && this.placeholder) { return }
 
     let arr = this.value.split('').map((e)=>{return {char: e, type: 'char'}});
     let pos = { char: '', type: 'pos' };
