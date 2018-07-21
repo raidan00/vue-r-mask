@@ -51,6 +51,16 @@
 			<input v-mask="/[0-2]{1}\d{1}:[0-5]{1}\d{1}/">
 		</div>
 		<div>
+			<div class="text">Mask with placeholder</div>
+			<div class="mask">v-mask="/\w{0,100}/"</div>
+			<input v-mask="/\w{0,100}/" placeholder="A placeholder">
+		</div>
+		<div>
+			<div class="text">Mask that appends text</div>
+			<div class="mask">v-mask="/\w{0,30}@somedomain\.com/"</div>
+			<input v-mask="/\w{0,30}@domain\.com/"  placeholder="Choose email">
+		</div>
+		<div>
 			<div class="text">Change mask on the fly</div>
 			<div class="mask">v-mask="{{changeableMask.toString()}}"</div>
 			<button @click="setMask1">/\+1 \(\d{3}\) \d{4}-\d{2}/</button>
