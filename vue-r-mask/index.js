@@ -28,8 +28,8 @@ function initMask (el, val){
 			toPush.minLen = 1;
 			toPush.maxLen = 1;
 			toPush.type = 'single';
-      toPush.char = match[0][match[0].length-1];
-      toPush.reg = new RegExp(match[0]+'+');
+			toPush.char = match[0][match[0].length-1];
+			toPush.reg = new RegExp(match[0]+'+');
 		} else {
 			toPush.minLen = +/\{(\d+)/.exec(match[0])[1];
 			toPush.maxLen = +/(\d+)\}/.exec(match[0])[1];
@@ -64,12 +64,12 @@ function initMask (el, val){
 					}
 					continue;
 				}
-        if(frame[i].reg.exec(arr[0].char)){
+				if(frame[i].reg.exec(arr[0].char)){
 					if( k >= frame[i].minLen && arr[0].char == '_') {
 						continue mainLoop;
 					}
-          newVal.push(arr.shift());
-        }else{
+					newVal.push(arr.shift());
+				}else{
 					if(frame[i].type == 'single'){
 						newVal.push({char:frame[i].char});
 					}else{
