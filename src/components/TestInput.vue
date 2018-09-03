@@ -57,7 +57,7 @@
 		</div>
 		<div>
 			<div class="text">Mask that appends text</div>
-			<div class="mask">v-mask="/\w{0,30}@somedomain\.com/"</div>
+			<div class="mask">v-mask="/\w{0,30}@domain\.com/"</div>
 			<input v-mask="/\w{0,30}@domain\.com/"  placeholder="Choose email">
 		</div>
 		<div>
