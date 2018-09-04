@@ -3,7 +3,7 @@ import caret from  './caretPos.js';
 export default {
 	bind (el, val, VNode){
 		bind(...arguments)
-  },
+	},
 	update (el, val, VNode){
 		if( val.value.toString() == val.oldValue.toString()) return;
 		el.removeEventListener('input', VNode.context.vueRmask)
@@ -33,7 +33,7 @@ function initMask (el, val){
 		} else {
 			toPush.minLen = +/\{(\d+)/.exec(match[0])[1];
 			toPush.maxLen = +/(\d+)\}/.exec(match[0])[1];
-      toPush.reg = new RegExp('(_|' + match[1] + ')+');
+			toPush.reg = new RegExp('(_|' + match[1] + ')+');
 		}
 		frame.push(toPush);
 	}
