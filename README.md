@@ -6,7 +6,7 @@
 * Arbitrary number of digits in template /\d{1,10}/
 
 ### [Live Demo](https://raidan00.github.io/vue-r-mask/)
-### [Live Demo Source](https://github.com/raidan00/vue-r-mask/blob/master/src/components/TestInput.vue)
+### [Live Demo Source](https://github.com/raidan00/vue-r-mask/blob/master/src/components/Demo.vue)
 ## Install in your project
 ```
 npm install vue-r-mask
