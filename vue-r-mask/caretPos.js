@@ -1,23 +1,21 @@
 export default {
-	get: function (ctrl) {
+	get: function (input) {
 		var CaretPos = 0;
-		if (ctrl.selectionStart || ctrl.selectionStart == 0) {// Standard.
-			CaretPos = ctrl.selectionStart;
+		if (input.selectionStart || input.selectionStart == 0) {// Standart.
+			CaretPos = input.selectionStart;
 		} else if (document.selection) {// Legacy IE
-			ctrl.focus ();
 			var Sel = document.selection.createRange ();
-			Sel.moveStart ('character', -ctrl.value.length);
+			Sel.moveStart ('character', -input.value.length);
 			CaretPos = Sel.text.length;
 		} 
 		return (CaretPos);
 	},
-	set: function (ctrl,pos) {
-		if (ctrl.setSelectionRange) {
-			ctrl.focus();
-			ctrl.setSelectionRange(pos,pos);
+	set: function (input, pos) {
+		if (input.setSelectionRange) {
+			input.setSelectionRange(pos, pos);
 		}
-		else if (ctrl.createTextRange) {
-			var range = ctrl.createTextRange();
+		else if (input.createTextRange) {
+			var range = input.createTextRange();
 			range.collapse(true);
 			range.moveEnd('character', pos);
 			range.moveStart('character', pos);
