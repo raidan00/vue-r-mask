@@ -5,7 +5,7 @@
 * Directive useful for your own input or textarea.
 * Arbitrary number of digits in template /\d{1,10}/
 
-### [Live Demo](https://raidan00.github.io/vue-r-mask/dist/)
+### [Live Demo](https://raidan00.github.io/vue-r-mask/dist/index.html)
 ### [Live Demo Source](https://github.com/raidan00/vue-r-mask/blob/master/src/components/Demo.vue)
 ## Install in your project
 ```
