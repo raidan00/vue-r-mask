@@ -99,7 +99,7 @@ export default {
 		},
 	},
 	directives: {
-    mask: mask,
+		mask: mask,
 	}
 }
 </script>

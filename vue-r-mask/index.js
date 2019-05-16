@@ -11,11 +11,15 @@ export default {
 	}
 }
 function bind (el, val, VNode){
-	if(VNode.data.on && VNode.data.on.input) el.removeEventListener('input', VNode.data.on.input);
+	if(VNode.data.on && VNode.data.on.input && VNode.data.on.input._wrapper){
+		el.removeEventListener('input', VNode.data.on.input._wrapper);
+	}
 	let maskFunc = initMask(el, val);
 	el.addEventListener('input', maskFunc);
 	VNode.context.vueRmask = maskFunc;
-	if(VNode.data.on && VNode.data.on.input) el.addEventListener('input', VNode.data.on.input)
+	if(VNode.data.on && VNode.data.on.input && VNode.data.on.input._wrapper){
+		el.addEventListener('input', VNode.data.on.input._wrapper);
+	}
 	el.dispatchEvent(new Event('input'));
 };
 function initMask (el, val){
